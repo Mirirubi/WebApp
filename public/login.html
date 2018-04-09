@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <title>WebChat</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="chat.css">
+	<link rel="stylesheet" href="/alertify.js-0.3.11/themes/alertify.core.css" />
+	<link rel="stylesheet" href="/alertify.js-0.3.11/themes/alertify.bootstrap.css" />
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+<div class="userform-wrapper text-center">
+    <form class="form-inline justify-content-center login" action ='/index' name="userform" method="post">
+        <div class="form-group">
+            <label for="nickname" class="sr-only"></label>
+            <input type="text" class="form-control" name ="nickname" id="nickname" placeholder="Nickname" required/>
+        </div>
+        <button type="submit" class="btn btn-primary ml-1">LOG IN</button>
+        <!-- <p class="help-block">A user with this nickname already exists.</p> -->
+
+    </form>
+</div>
+	<script src="/alertify.js-0.3.11/lib/alertify.min.js"></script>
+</body>
+</html>

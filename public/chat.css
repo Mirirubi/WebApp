@@ -1,0 +1,14 @@
+.userform-wrapper form.login {
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+}
+
+body,html {
+	background:url(bg2.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
