@@ -1,17 +1,5 @@
 var socket = io.connect();
 
-var $usernameInput = $('.usernameInput'); // Input for username
-var $messages = $('.messages'); // Messages area
-var $inputMessage = $('.inputMessage'); // Input message input box
-var $loginPage = $('.login.page'); // The login page
-var $chatPage = $('.chat.page');
-
- // Prompt for setting a username
-
- var connected = false;
-  var escribiendo = false;
-  var lastTypingTime;
-  var $currentInput = $usernameInput.focus();
   
 socket.on('connect', function(datos) {
 	nickname = null;
@@ -116,10 +104,10 @@ $(document).ready(function (){
 	});
 
 
-	$('.mesaje').change(function(){
+	$('.mensaje').keypress(function(e){
+		console.log('dasd');
 		socket.emit('escribiendo',{nickname:socket.nickname,escribiendo:true});
 	});
-	
 	
 	
 	setInterval(function() {

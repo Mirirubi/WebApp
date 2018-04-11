@@ -32,7 +32,7 @@ MongoClient.connect(url, function(err, client) {
 		chat_mensajes = db.collection('mensajes');
 		chat_usuarios = db.collection('usuarios');
 		
-		chat_mensajes.find().limit(80).sort({_id:1}).toArray(function(err,result){	
+		chat_mensajes.find().limit(20).sort({_id:1}).toArray(function(err,result){	
 			if(err){
 				throw err;
 			}				
@@ -95,7 +95,7 @@ MongoClient.connect(url, function(err, client) {
 		client.on('nuevo usuario', function(nombre){
 			chat_usuarios.find({estado: true}).toArray(function(err,res){
 				if (err) {throw err;}
-				if (res[80]!=undefined) {
+				if (res[9]!=undefined) {
 					client.emit('limite usuarios',nombre);
 				}else{
 					
@@ -123,17 +123,6 @@ MongoClient.connect(url, function(err, client) {
 				console.log('no escribiendo');
 			}
 		});
-		
-		/* socket.on('escribiendo', function () {
-			socket.broadcast.emit('escribiendo', {
-			  username: socket.nickname
-			});
-		});
-		socket.on('no escribiendo', function () {
-			socket.broadcast.emit('no escribiendo', {
-			  username: socket.nickname
-			});
-		 }); */
 		
 		function ActualizarUsuarios(){
 			chat_usuarios.find({estado: true}).sort({nickname:1}).toArray(function(err,res){			
