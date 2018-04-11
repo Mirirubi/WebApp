@@ -95,7 +95,7 @@ MongoClient.connect(url, function(err, client) {
 		client.on('nuevo usuario', function(nombre){
 			chat_usuarios.find({estado: true}).toArray(function(err,res){
 				if (err) {throw err;}
-				if (res[25]!=undefined) {
+				if (res[80]!=undefined) {
 					client.emit('limite usuarios',nombre);
 				}else{
 					

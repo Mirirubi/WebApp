@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
     <title>UpnaShop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -63,8 +63,12 @@
 			<div class="row">
 				<div class="col-9 col-sm-12 col-lg-12 col-md-12">
 					<div class="row">
-						<div class="form-group col-10" style="padding-right: 0px;">
+						<div class="form-group mensaje2 col-8" style="padding-right: 0px;">
 							<input type="textarea" id="inputdata" class="form-control mensaje" data-emojiable="true" placeholder="Escriba aquí su mensaje...">
+															
+						</div>
+						<div class="col-2">
+							<a id="emoji" tabindex="0" class="btn btn-outline-secondary d-none d-lg-block" role="button" data-toggle="popover" data-trigger="focus" title="Emojis" data-placement="bottom">😄</a>
 						</div>
 						<div class="col-2">
 							<button type="submit" class="btn btn-block btn-primary enviar">Enviar</button>
@@ -77,15 +81,15 @@
 	</div>
 </div> 
     <!-- Script to Activate Tooltips -->	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="/alertify.js-0.3.11/lib/alertify.min.js"></script>
 	 <script src="../lib/js/config.js"></script>
     <script src="../lib/js/util.js"></script>
     <script src="../lib/js/jquery.emojiarea.js"></script>
     <script src="../lib/js/emoji-picker.js"></script>
 	
-	<script>
+<!-- 	<script>
       $(function() {
         // Initializes and creates emoji set from sprite sheet
         window.emojiPicker = new EmojiPicker({
@@ -98,6 +102,25 @@
         // It can be called as many times as necessary; previously converted input fields will not be converted again
         window.emojiPicker.discover();
       });
+    </script> -->
+	<script>
+		 $(function () {
+			$('.example-popover').popover({
+			container: 'body'
+			})
+		})
+		$(function () {
+		  	$('[data-toggle="popover"]').popover({			                               
+				html: true, content: '<div id="emojis" class="btn-group-xs"><button type="submit" class="btn btn-link btn-sm">😀</button><button type="submit" class="btn btn-link btn-sm">😁</button>			<button type="submit" class="btn btn-link btn-sm">😂</button><button type="submit" class="btn btn-link btn-sm">🤣</button><button type="submit" class="btn btn-link btn-sm">😄</button><button type="submit" class="btn btn-link btn-sm">😅</button><button type="submit" class="btn btn-link btn-sm">😆</button><button type="submit" class="btn btn-link btn-sm">😉</button><button type="submit" class="btn btn-link btn-sm">😊</button><button type="submit" class="btn btn-link btn-sm">😎</button><button type="submit" class="btn btn-link btn-sm">😍</button><button type="submit" class="btn btn-link btn-sm">😘</button><button type="submit" class="btn btn-link btn-sm">😗</button><button type="submit" class="btn btn-link btn-sm">😙</button><button type="submit" class="btn btn-link btn-sm">😚</button><button type="submit" class="btn btn-link btn-sm">☺️</button><button type="submit" class="btn btn-link btn-sm">🙂</button><button type="submit" class="btn btn-link btn-sm">😇</button><button type="submit" class="btn btn-link btn-sm">🤩</button><button type="submit" class="btn btn-link btn-sm">😎</button><button type="submit" class="btn btn-link btn-sm">🤔</button><button type="submit" class="btn btn-link btn-sm">🤨</button><button type="submit" class="btn btn-link btn-sm">😐</button><button type="submit" class="btn btn-link btn-sm">😑</button><button type="submit" class="btn btn-link btn-sm">😶</button><button type="submit" class="btn btn-link btn-sm">🙄</button><button type="submit" class="btn btn-link btn-sm">😏</button><button type="submit" class="btn btn-link btn-sm">🤠</button><button type="submit" class="btn btn-link btn-sm">😣</button><button type="submit" class="btn btn-link btn-sm">😥</button><button type="submit" class="btn btn-link btn-sm">😮</button><button type="submit" class="btn btn-link btn-sm">🤕</button><button type="submit" class="btn btn-link btn-sm">🤐</button><button type="submit" class="btn btn-link btn-sm">😴</button><button type="submit" class="btn btn-link btn-sm">😌</button><button type="submit" class="btn btn-link btn-sm">👺</button><button type="submit" class="btn btn-link btn-sm">🤤</button><button type="submit" class="btn btn-link btn-sm">😬</button><button type="submit" class="btn btn-link btn-sm">🙃</button><button type="submit" class="btn btn-link btn-sm">😤</button><button type="submit" class="btn btn-link btn-sm">👹</button><button type="submit" class="btn btn-link btn-sm">💀</button></div>'}).on('click',function(){
+		  			$(".btn-link").on("click",function(e){
+						$(".mensaje").val($('[data-toggle="popover"]').val()+""+$(this).text());
+					});
+		  		});
+		});
+		$('.popover-dismiss').popover({
+		  	trigger: 'focus'
+		});
+		$('#emoji').popover(options);
     </script>
 </body>
 </html>

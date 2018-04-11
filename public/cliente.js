@@ -98,33 +98,36 @@ $(document).ready(function (){
 			socket.emit('mensajes',{nickname:socket.nickname,mensaje:$('.mensaje').val()});
 			$('#chat').append('<li><p>Yo: '+$('.mensaje').val()+'</p></li>');
 			$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
-			$('.emoji-wysiwyg-editor').empty();
+			$('.mensaje').val('');
 		}else{
 			alertify.error("Introduce un mesaje");
 		}
 		
 	});
-	$('#mensaje1').on('DOMSubtreeModified',function (e) {
-		
+	$('.mensaje').keypress(function (e) {
 	  if ((e.which == 13) && ($('#mensaje1').val()!="")) {
 		socket.emit('mensajes',{nickname:socket.nickname,mensaje:$('.mensaje').val()});
 		$('#chat').append('<li><p>Yo: '+$('.mensaje').val()+'</p></li>');
 		$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
-		$('.emoji-wysiwyg-editor').empty();
+		$('.mensaje').val('');
 		
 	  }else{
 	  }
 	});
 
 
-	$('#mensaje1').on("DOMSubtreeModified", escribir);
-	
-	function escribir(){
+	$('.mesaje').change(function(){
 		socket.emit('escribiendo',{nickname:socket.nickname,escribiendo:true});
-	}
+	});
+	
+	
+	
 	setInterval(function() {
 		socket.emit('escribiendo',{nickname:socket.nickname,escribiendo:false});
 	}, 2000);
 	
-
+	$('#emoji').on('click',function(){
+		$('#emoji').val($('.mensaje').val());
+	});
 });
+
