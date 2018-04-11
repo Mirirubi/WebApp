@@ -93,19 +93,47 @@ MongoClient.connect(url, function(err, client) {
 		});
 		
 		client.on('nuevo usuario', function(nombre){
-			chat_usuarios.find({nickname: nombre}).toArray(function(err,res){
+			chat_usuarios.find({estado: true}).toArray(function(err,res){
 				if (err) {throw err;}
-				if (res[0]!=undefined) {
-					client.emit('usuario no valido',res[0].nickname);
-					//console.log(res[0].nickname);
+				if (res[25]!=undefined) {
+					client.emit('limite usuarios',nombre);
 				}else{
-					client.emit('usuario valido',nombre);
-					console.log('adiosssssss');
+					
+					chat_usuarios.find({nickname: nombre}).toArray(function(err,res){
+						if (err) {throw err;}
+						if (res[0]!=undefined) {
+							client.emit('usuario no valido',res[0].nickname);
+						//console.log(res[0].nickname);
+						}else{
+							client.emit('usuario valido',nombre);
+							console.log('adiosssssss');
+						}
+					});
+					ActualizarUsuarios();			
 				}
-			});
-			ActualizarUsuarios();
-		
+			});		
 		});
+		
+		client.on('escribiendo', function(datos){
+			if(datos.escribiendo){
+				client.broadcast.emit('usuario escribiendo',datos.nickname);
+				console.log('escribiendo');
+			}else{
+				client.broadcast.emit('usuario no escribiendo',datos.nickname);
+				console.log('no escribiendo');
+			}
+		});
+		
+		/* socket.on('escribiendo', function () {
+			socket.broadcast.emit('escribiendo', {
+			  username: socket.nickname
+			});
+		});
+		socket.on('no escribiendo', function () {
+			socket.broadcast.emit('no escribiendo', {
+			  username: socket.nickname
+			});
+		 }); */
 		
 		function ActualizarUsuarios(){
 			chat_usuarios.find({estado: true}).sort({nickname:1}).toArray(function(err,res){			
@@ -121,6 +149,8 @@ MongoClient.connect(url, function(err, client) {
 				client.broadcast.emit('refrescar usuarios',users);
 			});
 		}
+		
+		
 	});
 	
 	

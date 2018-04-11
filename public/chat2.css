@@ -1,0 +1,8 @@
+.messages {
+  height:350px;
+  overflow-y: scroll;
+}
+.list-users{
+	height:350px;
+	overflow-y: scroll;
+}
