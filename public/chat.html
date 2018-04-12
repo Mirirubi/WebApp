@@ -1,83 +1,60 @@
+
 <!DOCTYPE html>
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
 	<title>UpnaShop</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/alertify.js-0.3.11/themes/alertify.core.css" />
 	<link rel="stylesheet" href="/alertify.js-0.3.11/themes/alertify.bootstrap.css" />
-	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<link rel="stylesheet" href="chat2.css" />
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="cliente.js"></script>
+
 </head>
 
 <body>
-	<nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-primary">
-		<a class="navbar-brand d-none d-sm-block" href="#">
-			<img src="logo.png" class="img-fluid float-right">
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Barnav" aria-controls="Barnav" aria-expanded="false"
-		 aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="Barnav">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="index.html">Portada</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="about.html">Sobre la empresa</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="productos.html">Productos</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="contacto.html">Contacto</a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="chat.html">Chat</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	<div style="color: rgb(255,0,10);">123</div>
-
-	<span style="color: rgb(125,60,152);">123</span>
 	<div class="container" style="padding-top:20px">
 
 		<div class="row mt-5">
-			<div class="col-4">
+			<div class="col-12 col-sm-12 col-md-4">
 				<div class="row">
 					<div class="col-12 mx-auto" style="text-align:center;">
 						<h5>USUARIOS EN LÍNEA</h5>
 					</div>
 				</div>
 				<div class="row mt-3">
-					<div class="col-12">
-						<ul class="list-unstyled">
+					<div class="users col-12">
+						<ul class="list-unstyled list-users">
 
 						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="col-8">
+			<div class="col-12 col-sm-12 col-md-8">
 				<div class="row">
-					<div class="col-12 col-sm-12 col-lg-12 col-md-12">
-						<div class="form-group">
-							<textarea disabled class="form-control" id="chat" rows="12" style="resize:none;"></textarea>
+					<div class="col-12 col-sm-12 col-lg-12 col-md-12 mx-auto" style="text-align:center;">
+						<h5>CHAT</h5>
+						<div class="mensajes form-group" style="text-align:left;">
+							<ul class="list-unstyled messages" id="chat"></ul>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-9 col-sm-12 col-lg-12 col-md-12">
+					<div class="col-12 col-sm-12 col-lg-12 col-md-12 pr-4 pl-2">
 						<div class="row">
-							<div class="form-group col-10" style="padding-right: 0px;">
+							<div class="form-group mensaje2 col-11 col-md-9 col-sm-9" style="padding-right: 0px;">
 								<input type="textarea" class="form-control mensaje" placeholder="Escriba aquí su mensaje...">
 							</div>
-							<div class="col-2">
-								<button type="submit" class="btn btn-block btn-primary enviar">></button>
+							<div class="col-1 col-sm-1 col-md-1 pr-0 pl-0 mr-0 mb-0">
+								<a id="emoji" tabindex="0" class="btn btn-outline-secondary d-lg-block" role="button" data-toggle="popover" data-trigger="focus"
+								 title="Emojis" data-placement="bottom">😂</a>
+							</div>
+							<div class="col-12 col-sm-2 col-md-2 pl-2 pr-0">
+								<button type="submit" class="btn btn-block btn-primary enviar">Enviar</button>
 							</div>
 						</div>
 					</div>
@@ -87,9 +64,27 @@
 		</div>
 	</div>
 	<!-- Script to Activate Tooltips -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+	<script src="popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="/alertify.js-0.3.11/lib/alertify.min.js"></script>
+
+	<script>
+		$(function () {
+			$('.example-popover').popover({
+				container: 'body'
+			})
+		})
+		$(function () {
+			$('[data-toggle="popover"]').popover({ html: true, content: '<div id="emojis" class="btn-group-xs"><button type="submit" class="btn btn-link btn-sm">😀</button><button type="submit" class="btn btn-link btn-sm">😁</button><button type="submit" class="btn btn-link btn-sm">😂</button><button type="submit" class="btn btn-link btn-sm">🤣</button><button type="submit" class="btn btn-link btn-sm">😄</button><button type="submit" class="btn btn-link btn-sm">😅</button><button type="submit" class="btn btn-link btn-sm">😆</button><button type="submit" class="btn btn-link btn-sm">😉</button><button type="submit" class="btn btn-link btn-sm">😊</button><button type="submit" class="btn btn-link btn-sm">😎</button><button type="submit" class="btn btn-link btn-sm">😍</button><button type="submit" class="btn btn-link btn-sm">😘</button><button type="submit" class="btn btn-link btn-sm">😗</button><button type="submit" class="btn btn-link btn-sm">😙</button><button type="submit" class="btn btn-link btn-sm">😚</button><button type="submit" class="btn btn-link btn-sm">☺️</button><button type="submit" class="btn btn-link btn-sm">🙂</button><button type="submit" class="btn btn-link btn-sm">😇</button><button type="submit" class="btn btn-link btn-sm">🤩</button><button type="submit" class="btn btn-link btn-sm">😎</button><button type="submit" class="btn btn-link btn-sm">🤔</button><button type="submit" class="btn btn-link btn-sm">🤨</button><button type="submit" class="btn btn-link btn-sm">😐</button><button type="submit" class="btn btn-link btn-sm">😑</button><button type="submit" class="btn btn-link btn-sm">😶</button><button type="submit" class="btn btn-link btn-sm">🙄</button><button type="submit" class="btn btn-link btn-sm">😏</button><button type="submit" class="btn btn-link btn-sm">🤠</button><button type="submit" class="btn btn-link btn-sm">😣</button><button type="submit" class="btn btn-link btn-sm">😥</button><button type="submit" class="btn btn-link btn-sm">😮</button><button type="submit" class="btn btn-link btn-sm">🤕</button><button type="submit" class="btn btn-link btn-sm">🤐</button><button type="submit" class="btn btn-link btn-sm">😴</button><button type="submit" class="btn btn-link btn-sm">😌</button><button type="submit" class="btn btn-link btn-sm">👺</button><button type="submit" class="btn btn-link btn-sm">🤤</button><button type="submit" class="btn btn-link btn-sm">😬</button><button type="submit" class="btn btn-link btn-sm">🙃</button><button type="submit" class="btn btn-link btn-sm">😤</button><button type="submit" class="btn btn-link btn-sm">👹</button><button type="submit" class="btn btn-link btn-sm">💀</button></div>' }).on('click', function () {
+				$(".btn-link").on("click", function (e) {
+					$(".mensaje").val($('[data-toggle="popover"]').val() + "" + $(this).text());
+				});
+			});
+		});
+		$('.popover-dismiss').popover({ trigger: 'focus' });
+
+	</script>
 </body>
 
 </html>
