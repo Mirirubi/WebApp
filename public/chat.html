@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
     <title>Livechats</title>
@@ -25,7 +27,8 @@
 				<div class="users scrollbar col-12" id="style-1">
 					<ul class="list-unstyled mt-2 list-users" >
 
-					</ul>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -36,46 +39,47 @@
 						<ul class="list-unstyled scrollbar messages" id="chat"></ul>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-12 col-sm-12 col-lg-12 col-md-12 pr-4 pl-2">
-					<div class="row">
-						<div class="form-group mensaje2 col-11 col-md-9 col-sm-9" style="padding-right: 0px;">
-							<input type="textarea" class="form-control mensaje" placeholder="Escriba aquí su mensaje...">
-						</div>
-						<div class="col-1 col-sm-1 col-md-1 pr-0 pl-0 mr-0 mb-0">
-							 <a id="emoji" tabindex="0" class="btn btn-outline-secondary d-lg-block" role="button" data-toggle="popover" data-trigger="focus" title="Emojis" data-placement="bottom">😂</a>
-						</div>
-						<div class="col-12 col-sm-2 col-md-2 pl-2 pr-0">
-							<button type="submit" class="btn btn-block btn-primary enviar">Enviar</button>
+				<div class="row">
+					<div class="col-12 col-sm-12 col-lg-12 col-md-12 pr-4 pl-2">
+						<div class="row">
+							<div class="form-group mensaje2 col-11 col-md-9 col-sm-9" style="padding-right: 0px;">
+								<input type="textarea" class="form-control mensaje" placeholder="Escriba aquí su mensaje...">
+							</div>
+							<div class="col-1 col-sm-1 col-md-1 pr-0 pl-0 mr-0 mb-0">
+								<a id="emoji" tabindex="0" class="btn btn-outline-secondary d-lg-block" role="button" data-toggle="popover" data-trigger="focus"
+								 title="Emojis" data-placement="bottom">😂</a>
+							</div>
+							<div class="col-12 col-sm-2 col-md-2 pl-2 pr-0">
+								<button type="submit" class="btn btn-block btn-primary enviar">Enviar</button>
+							</div>
 						</div>
 					</div>
-				</div>				
+				</div>
+
 			</div>
-			
 		</div>
 	</div>
-</div> 
-    <!-- Script to Activate Tooltips -->
-	
+	<!-- Script to Activate Tooltips -->
+
 	<script src="popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="/alertify.js-0.3.11/lib/alertify.min.js"></script>
-	
+
 	<script>
-			$(function () {
+		$(function () {
 			$('.example-popover').popover({
-			container: 'body'
+				container: 'body'
 			})
 		})
 		$(function () {
-		  	$('[data-toggle="popover"]').popover({html: true, content: '<div id="emojis" class="btn-group-xs"><button type="submit" class="btn btn-link btn-sm">😀</button><button type="submit" class="btn btn-link btn-sm">😁</button><button type="submit" class="btn btn-link btn-sm">😂</button><button type="submit" class="btn btn-link btn-sm">🤣</button><button type="submit" class="btn btn-link btn-sm">😄</button><button type="submit" class="btn btn-link btn-sm">😅</button><button type="submit" class="btn btn-link btn-sm">😆</button><button type="submit" class="btn btn-link btn-sm">😉</button><button type="submit" class="btn btn-link btn-sm">😊</button><button type="submit" class="btn btn-link btn-sm">😎</button><button type="submit" class="btn btn-link btn-sm">😍</button><button type="submit" class="btn btn-link btn-sm">😘</button><button type="submit" class="btn btn-link btn-sm">😗</button><button type="submit" class="btn btn-link btn-sm">😙</button><button type="submit" class="btn btn-link btn-sm">😚</button><button type="submit" class="btn btn-link btn-sm">☺️</button><button type="submit" class="btn btn-link btn-sm">🙂</button><button type="submit" class="btn btn-link btn-sm">😇</button><button type="submit" class="btn btn-link btn-sm">🤩</button><button type="submit" class="btn btn-link btn-sm">😎</button><button type="submit" class="btn btn-link btn-sm">🤔</button><button type="submit" class="btn btn-link btn-sm">🤨</button><button type="submit" class="btn btn-link btn-sm">😐</button><button type="submit" class="btn btn-link btn-sm">😑</button><button type="submit" class="btn btn-link btn-sm">😶</button><button type="submit" class="btn btn-link btn-sm">🙄</button><button type="submit" class="btn btn-link btn-sm">😏</button><button type="submit" class="btn btn-link btn-sm">🤠</button><button type="submit" class="btn btn-link btn-sm">😣</button><button type="submit" class="btn btn-link btn-sm">😥</button><button type="submit" class="btn btn-link btn-sm">😮</button><button type="submit" class="btn btn-link btn-sm">🤕</button><button type="submit" class="btn btn-link btn-sm">🤐</button><button type="submit" class="btn btn-link btn-sm">😴</button><button type="submit" class="btn btn-link btn-sm">😌</button><button type="submit" class="btn btn-link btn-sm">👺</button><button type="submit" class="btn btn-link btn-sm">🤤</button><button type="submit" class="btn btn-link btn-sm">😬</button><button type="submit" class="btn btn-link btn-sm">🙃</button><button type="submit" class="btn btn-link btn-sm">😤</button><button type="submit" class="btn btn-link btn-sm">👹</button><button type="submit" class="btn btn-link btn-sm">💀</button></div>'}).on('click',function(){
-		  			$(".btn-link").on("click",function(e){
-						$(".mensaje").val($('[data-toggle="popover"]').val()+""+$(this).text());
-					});
-		  		});
+			$('[data-toggle="popover"]').popover({ html: true, content: '<div id="emojis" class="btn-group-xs"><button type="submit" class="btn btn-link btn-sm">😀</button><button type="submit" class="btn btn-link btn-sm">😁</button><button type="submit" class="btn btn-link btn-sm">😂</button><button type="submit" class="btn btn-link btn-sm">🤣</button><button type="submit" class="btn btn-link btn-sm">😄</button><button type="submit" class="btn btn-link btn-sm">😅</button><button type="submit" class="btn btn-link btn-sm">😆</button><button type="submit" class="btn btn-link btn-sm">😉</button><button type="submit" class="btn btn-link btn-sm">😊</button><button type="submit" class="btn btn-link btn-sm">😎</button><button type="submit" class="btn btn-link btn-sm">😍</button><button type="submit" class="btn btn-link btn-sm">😘</button><button type="submit" class="btn btn-link btn-sm">😗</button><button type="submit" class="btn btn-link btn-sm">😙</button><button type="submit" class="btn btn-link btn-sm">😚</button><button type="submit" class="btn btn-link btn-sm">☺️</button><button type="submit" class="btn btn-link btn-sm">🙂</button><button type="submit" class="btn btn-link btn-sm">😇</button><button type="submit" class="btn btn-link btn-sm">🤩</button><button type="submit" class="btn btn-link btn-sm">😎</button><button type="submit" class="btn btn-link btn-sm">🤔</button><button type="submit" class="btn btn-link btn-sm">🤨</button><button type="submit" class="btn btn-link btn-sm">😐</button><button type="submit" class="btn btn-link btn-sm">😑</button><button type="submit" class="btn btn-link btn-sm">😶</button><button type="submit" class="btn btn-link btn-sm">🙄</button><button type="submit" class="btn btn-link btn-sm">😏</button><button type="submit" class="btn btn-link btn-sm">🤠</button><button type="submit" class="btn btn-link btn-sm">😣</button><button type="submit" class="btn btn-link btn-sm">😥</button><button type="submit" class="btn btn-link btn-sm">😮</button><button type="submit" class="btn btn-link btn-sm">🤕</button><button type="submit" class="btn btn-link btn-sm">🤐</button><button type="submit" class="btn btn-link btn-sm">😴</button><button type="submit" class="btn btn-link btn-sm">😌</button><button type="submit" class="btn btn-link btn-sm">👺</button><button type="submit" class="btn btn-link btn-sm">🤤</button><button type="submit" class="btn btn-link btn-sm">😬</button><button type="submit" class="btn btn-link btn-sm">🙃</button><button type="submit" class="btn btn-link btn-sm">😤</button><button type="submit" class="btn btn-link btn-sm">👹</button><button type="submit" class="btn btn-link btn-sm">💀</button></div>' }).on('click', function () {
+				$(".btn-link").on("click", function (e) {
+					$(".mensaje").val($('[data-toggle="popover"]').val() + "" + $(this).text());
+				});
+			});
 		});
 		$('.popover-dismiss').popover({trigger: 'focus'});
 	</script>
 </body>
+
 </html>
