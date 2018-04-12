@@ -32,7 +32,7 @@ MongoClient.connect(url, function(err, client) {
 		chat_mensajes = db.collection('mensajes');
 		chat_usuarios = db.collection('usuarios');
 		
-		chat_mensajes.find().limit(20).sort({_id:1}).toArray(function(err,result){	
+		chat_mensajes.find().limit(500).sort({_id:1}).toArray(function(err,result){	
 			if(err){
 				throw err;
 			}				
