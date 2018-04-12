@@ -14,29 +14,26 @@
 
 </head>
 <body>  
-<div class="container" style="padding-top:20px">
+<div class="container">
 	
-	<div class="row mt-5">
-		<div class="col-12 col-sm-12 col-md-4">
+	<div class="row content mt-4 mb-4">
+		<div class="col-12 col-sm-12 col-md-3 lista-usuarios">
 			<div class="row">
-				<div class="col-12 mx-auto" style="text-align:center;">
-				   <h5>USUARIOS EN LÍNEA</h5>
-				</div>
+				<img src="http://pluspng.com/img-png/live-chat-icon-image-7403-935.png" class="img-fluid logo">
 			</div>
-			<div class="row mt-3">
-				<div class="users col-12">
-					<ul class="list-unstyled list-users">
+			<div class="row mt-4">
+				<div class="users scrollbar col-12" id="style-1">
+					<ul class="list-unstyled mt-2 list-users" >
 
 					</ul>
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-sm-12 col-md-8">
+		<div class="col-12 col-sm-12 col-md-9 chat">
 			<div class="row">
 				<div class="col-12 col-sm-12 col-lg-12 col-md-12 mx-auto" style="text-align:center;">
-					<h5>CHAT</h5>
 					<div class="mensajes form-group" style="text-align:left;">  		
-						<ul class="list-unstyled messages" id="chat"></ul>
+						<ul class="list-unstyled scrollbar messages" id="chat"></ul>
 					</div>
 				</div>
 			</div>
@@ -79,7 +76,6 @@
 		  		});
 		});
 		$('.popover-dismiss').popover({trigger: 'focus'});
-	
 	</script>
 </body>
 </html>

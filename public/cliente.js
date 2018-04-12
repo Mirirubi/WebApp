@@ -28,11 +28,13 @@ socket.on('usuario no valido', function(datos) {
 });
 
 socket.on('borrar',function(nombre){
-	$('#chat').append('<li><p>'+nombre+' se ha desconectado </p></li>');
+	$('#chat').append('<li><div class="bocadillo3"><p>'+nombre+' se ha desconectado </p></div></li>');
+	$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
 });
 
 socket.on('unir',function(nombre){
-	$('#chat').append('<li><p>'+nombre+' se ha unido </p></li>');
+	$('#chat').append('<li><div class="bocadillo3"><p>'+nombre+' se ha unido </p></div></li>');
+	$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
 });
 
 /* socket.on('mensajes',function(datos){
@@ -42,7 +44,8 @@ socket.on('output',function(data){
 	console.log(data);
 	if(data.length){
 		for(var x=0;x<data.length;x++){
-			$('#chat').append('<li><p>'+data[x].nickname+': '+data[x].mensaje+'</p></li>');
+			var date=new Date(data[x].fecha);
+			$('#chat').append('<li><div class="bocadillo"><p>'+data[x].nickname+': '+data[x].mensaje+'</p><p class="fecha">'+addZero(date.getHours())+':'+addZero(date.getMinutes())+'</p></div></li>');
 		}
 		$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
 	}
@@ -63,7 +66,7 @@ socket.on('usuario escribiendo',function(nombre){
 		console.log('1');
 		
 	}else{
-		$('#chat').append('<li class="'+nombre+'"><p>'+nombre+' está escribiendo ...</p></li>');
+		$('#chat').append('<li class="'+nombre+'"><div class="bocadillo3"><p>'+nombre+' está escribiendo ...</p></div></li>');
 		$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
 		console.log('2');
 	}
@@ -73,7 +76,7 @@ socket.on('usuario no escribiendo',function(nombre){
 	if($('.'+nombre).text().length > 0) {
 		$('.'+nombre).remove();
 	}
-	$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
+	
 });
 
   
@@ -83,8 +86,9 @@ $(document).ready(function (){
 	
 	$('.enviar').on('click',function(e){
 		if ($('.mensaje').val()!="") {
-			socket.emit('mensajes',{nickname:socket.nickname,mensaje:$('.mensaje').val()});
-			$('#chat').append('<li><p>Yo: '+$('.mensaje').val()+'</p></li>');
+			var date= new Date();
+			socket.emit('mensajes',{nickname:socket.nickname,mensaje:$('.mensaje').val(),fecha:date});
+			$('#chat').append('<li><div class="bocadillo2"><p>Yo: '+$('.mensaje').val()+'</p><p class="fecha">'+addZero(date.getHours())+':'+addZero(date.getMinutes())+'</p></div></li>');
 			$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
 			$('.mensaje').val('');
 		}else{
@@ -93,14 +97,16 @@ $(document).ready(function (){
 		
 	});
 	$('.mensaje').keypress(function (e) {
-	  if ((e.which == 13) && ($('#mensaje1').val()!="")) {
-		socket.emit('mensajes',{nickname:socket.nickname,mensaje:$('.mensaje').val()});
-		$('#chat').append('<li><p>Yo: '+$('.mensaje').val()+'</p></li>');
-		$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
-		$('.mensaje').val('');
+		if ((e.which == 13) && ($('.mensaje').val()!="")) {
+			var date= new Date();
+			socket.emit('mensajes',{nickname:socket.nickname,mensaje:$('.mensaje').val(),fecha:date});
+			$('#chat').append('<li><div class="bocadillo2"><p>Yo: '+$('.mensaje').val()+'</p><p class="fecha">'+addZero(date.getHours())+':'+addZero(date.getMinutes())+'</p></div></li>');
+			$('#chat')[0].scrollTop = $('#chat')[0].scrollHeight;
+			$('.mensaje').val('');
 		
-	  }else{
-	  }
+		}else if ((e.which == 13) && ($('.mensaje').val()=="")){
+			alertify.error("Introduce un mesaje");
+		}
 	});
 
 
@@ -119,3 +125,9 @@ $(document).ready(function (){
 	});
 });
 
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
