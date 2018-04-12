@@ -4,8 +4,8 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>UpnaShop</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livechats</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/alertify.js-0.3.11/themes/alertify.core.css" />
 	<link rel="stylesheet" href="/alertify.js-0.3.11/themes/alertify.bootstrap.css" />
@@ -15,32 +15,28 @@
 	<script src="cliente.js"></script>
 
 </head>
-
-<body>
-	<div class="container" style="padding-top:20px">
-
-		<div class="row mt-5">
-			<div class="col-12 col-sm-12 col-md-4">
-				<div class="row">
-					<div class="col-12 mx-auto" style="text-align:center;">
-						<h5>USUARIOS EN LÍNEA</h5>
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="users col-12">
-						<ul class="list-unstyled list-users">
+<body>  
+<div class="container">
+	
+	<div class="row content mt-4 mb-4">
+		<div class="col-12 col-sm-12 order-2 order-md-1 col-md-3 lista-usuarios">
+			<div class="row">
+				<img src="http://pluspng.com/img-png/live-chat-icon-image-7403-935.png" class="img-fluid logo">
+			</div>
+			<div class="row mt-4">
+				<div class="users scrollbar col-12" id="style-1">
+					<ul class="list-unstyled mt-2 list-users" >
 
 						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-sm-12 col-md-8">
-				<div class="row">
-					<div class="col-12 col-sm-12 col-lg-12 col-md-12 mx-auto" style="text-align:center;">
-						<h5>CHAT</h5>
-						<div class="mensajes form-group" style="text-align:left;">
-							<ul class="list-unstyled messages" id="chat"></ul>
-						</div>
+		</div>
+		<div class="col-12 col-sm-12 col-md-9 order-1 order-md-2 chat">
+			<div class="row">
+				<div class="col-12 col-sm-12 col-lg-12 col-md-12 mx-auto" style="text-align:center;">
+					<div class="mensajes form-group" style="text-align:left;">  		
+						<ul class="list-unstyled scrollbar messages" id="chat"></ul>
 					</div>
 				</div>
 				<div class="row">
@@ -82,8 +78,7 @@
 				});
 			});
 		});
-		$('.popover-dismiss').popover({ trigger: 'focus' });
-
+		$('.popover-dismiss').popover({trigger: 'focus'});
 	</script>
 </body>
 
